@@ -1,4 +1,4 @@
-package ua.task.test.users;
+package ua.task.test.users.utils;
 
 import org.springframework.stereotype.Component;
 

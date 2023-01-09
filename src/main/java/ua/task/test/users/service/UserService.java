@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import ua.task.test.model.Base64AvatarDTO;
 import ua.task.test.model.UserDTO;
 import ua.task.test.model.UserListDTO;
-import ua.task.test.users.EmailValidator;
+import ua.task.test.users.utils.EmailValidator;
 import ua.task.test.users.entity.UserEntity;
 import ua.task.test.users.mapper.UserMapper;
 import ua.task.test.users.repository.UserRepository;
