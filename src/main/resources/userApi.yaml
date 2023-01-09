@@ -1,0 +1,128 @@
+openapi: "3.0.0"
+info:
+  description: "Test task"
+  version: "0.0.1"
+  title: "ua.task.test.Users"
+  contact:
+    email: "tikholoz01@gmail.com"
+paths:
+  /user:
+    post:
+      summary: createUser
+      operationId: createUser
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserDTO"
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserDTO"
+    put:
+      summary: updateUser
+      operationId: updateUser
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserDTO"
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserDTO"
+    get:
+      summary: authorizeUser
+      operationId: authorizeUser
+      parameters:
+        - in: query
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserDTO"
+  /user/avatar:
+    post:
+      summary: uploadAvatar
+      operationId: uploadAvatar
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Base64AvatarDTO"
+      responses:
+        200:
+          description: "Successful operation"
+
+  /user/list:
+    get:
+      summary: getUserList
+      operationId: getUserList
+      parameters:
+        - in: query
+          name: pageNumber
+          required: true
+          schema:
+            type: integer
+        - in: query
+          name: pageSize
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserListDTO"
+components:
+  schemas:
+    Base64AvatarDTO:
+      type: object
+      properties:
+        base64:
+          type: string
+    UserDTO:
+      type: object
+      required:
+        - id
+        - email
+        - passwordHash
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+          format: email
+          example: user@example.com
+        avatarBase64:
+          type: string
+        passwordHash:
+          type: string
+    UserListDTO:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+        pageNumber:
+          type: integer
+        users:
+          type: array
+          items:
+            $ref: "#/components/schemas/UserDTO"  
