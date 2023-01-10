@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 import ua.task.test.model.Base64AvatarDTO;
 import ua.task.test.model.UserDTO;
 import ua.task.test.model.UserListDTO;
-import ua.task.test.users.utils.EmailValidator;
 import ua.task.test.users.entity.UserEntity;
 import ua.task.test.users.mapper.UserMapper;
 import ua.task.test.users.repository.UserRepository;
+import ua.task.test.users.utils.EmailValidator;
 
 import java.util.List;
 import java.util.UUID;
@@ -20,23 +20,20 @@ import java.util.stream.Collectors;
 public class UserService {
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    UserMapper userMapper;
-
-    @Autowired
-    EmailValidator emailValidator;
+    private UserMapper userMapper;
 
     public UserDTO createUser(UserDTO userDTO) {
-        emailValidator.validate(userDTO.getEmail());
+        EmailValidator.validate(userDTO.getEmail());
         UserEntity userEntity = createUserEntity(userDTO);
         UserEntity createdUserEntity = userRepository.save(userEntity);
         return userMapper.map(createdUserEntity);
     }
 
     public UserDTO updateUser(UserDTO userDTO) {
-        emailValidator.validate(userDTO.getEmail());
+        EmailValidator.validate(userDTO.getEmail());
         UserEntity userEntity = updateUserEntity(userDTO);
         UserEntity updatedUserEntity = userRepository.save(userEntity);
         return userMapper.map(updatedUserEntity);

@@ -21,7 +21,7 @@ public class UserController implements UserApi {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Override
     public ResponseEntity<UserDTO> createUser(UserDTO userDTO) {

@@ -15,7 +15,7 @@ import ua.task.test.users.filter.RequestFilter;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class AuthConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
-    RequestFilter requestFilter;
+    private RequestFilter requestFilter;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {

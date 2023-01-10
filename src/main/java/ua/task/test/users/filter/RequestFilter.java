@@ -28,7 +28,7 @@ public class RequestFilter extends OncePerRequestFilter {
     private static final String ADMIN_EMAIL = "admin";
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
